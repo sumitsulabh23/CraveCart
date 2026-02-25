@@ -38,13 +38,13 @@ const seedData = async () => {
                 isActive: true,
                 owner: ownerId,
                 foods: [
-                    { name: 'Butter Chicken', price: 349, category: 'Main Course' },
-                    { name: 'Paneer Butter Masala', price: 299, category: 'Main Course' },
-                    { name: 'Dal Makhani', price: 249, category: 'Main Course' },
-                    { name: 'Tandoori Roti', price: 25, category: 'Breads' },
-                    { name: 'Garlic Naan', price: 45, category: 'Breads' },
-                    { name: 'Chicken Biryani', price: 329, category: 'Main Course' },
-                    { name: 'Veg Biryani', price: 279, category: 'Main Course' }
+                    { name: 'Butter Chicken', price: 349, category: 'Main Course', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800' },
+                    { name: 'Paneer Butter Masala', price: 299, category: 'Main Course', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc0?w=800' },
+                    { name: 'Dal Makhani', price: 249, category: 'Main Course', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800' },
+                    { name: 'Tandoori Roti', price: 25, category: 'Breads', image: 'https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=800' },
+                    { name: 'Garlic Naan', price: 45, category: 'Breads', image: 'https://images.unsplash.com/photo-1626776876729-bab4369a5a5a?w=800' },
+                    { name: 'Chicken Biryani', price: 329, category: 'Main Course', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800' },
+                    { name: 'Veg Biryani', price: 279, category: 'Main Course', image: 'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=800' }
                 ]
             },
             {
@@ -55,12 +55,12 @@ const seedData = async () => {
                 isActive: true,
                 owner: ownerId,
                 foods: [
-                    { name: 'Vada Pav', price: 30, category: 'Snacks' },
-                    { name: 'Pav Bhaji', price: 120, category: 'Snacks' },
-                    { name: 'Misal Pav', price: 140, category: 'Snacks' },
-                    { name: 'Pani Puri', price: 50, category: 'Snacks' },
-                    { name: 'Sev Puri', price: 60, category: 'Snacks' },
-                    { name: 'Bombay Sandwich', price: 110, category: 'Snacks' }
+                    { name: 'Vada Pav', price: 30, category: 'Snacks', image: 'https://images.unsplash.com/photo-1605493725516-e5c9424e75eb?w=800' },
+                    { name: 'Pav Bhaji', price: 120, category: 'Snacks', image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800' },
+                    { name: 'Misal Pav', price: 140, category: 'Snacks', image: 'https://images.unsplash.com/photo-1626509653294-f8776caad9eb?w=800' },
+                    { name: 'Pani Puri', price: 50, category: 'Snacks', image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800' },
+                    { name: 'Sev Puri', price: 60, category: 'Snacks', image: 'https://images.unsplash.com/photo-1606491956291-561b36952cc2?w=800' },
+                    { name: 'Bombay Sandwich', price: 110, category: 'Snacks', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800' }
                 ]
             },
             {
@@ -71,12 +71,12 @@ const seedData = async () => {
                 isActive: true,
                 owner: ownerId,
                 foods: [
-                    { name: 'Plain Dosa', price: 80, category: 'Main Course' },
-                    { name: 'Masala Dosa', price: 120, category: 'Main Course' },
-                    { name: 'Idli Sambar', price: 70, category: 'Main Course' },
-                    { name: 'Medu Vada', price: 60, category: 'Snacks' },
-                    { name: 'Uttapam', price: 130, category: 'Main Course' },
-                    { name: 'Filter Coffee', price: 40, category: 'Beverages' }
+                    { name: 'Plain Dosa', price: 80, category: 'Main Course', image: 'https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=800' },
+                    { name: 'Masala Dosa', price: 120, category: 'Main Course', image: 'https://images.unsplash.com/photo-1610192248512-af6e0dcbd082?w=800' },
+                    { name: 'Idli Sambar', price: 70, category: 'Main Course', image: 'https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=800' },
+                    { name: 'Medu Vada', price: 60, category: 'Snacks', image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800' },
+                    { name: 'Uttapam', price: 130, category: 'Main Course', image: 'https://images.unsplash.com/photo-1605493725516-e5c9424e75eb?w=800' },
+                    { name: 'Filter Coffee', price: 40, category: 'Beverages', image: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800' }
                 ]
             },
             {
@@ -87,12 +87,12 @@ const seedData = async () => {
                 isActive: true,
                 owner: ownerId,
                 foods: [
-                    { name: 'Mutton Kosha', price: 399, category: 'Main Course' },
-                    { name: 'Fish Curry', price: 329, category: 'Main Course' },
-                    { name: 'Luchi', price: 40, category: 'Breads' },
-                    { name: 'Cholar Dal', price: 150, category: 'Main Course' },
-                    { name: 'Rasgulla', price: 25, category: 'Desserts' },
-                    { name: 'Mishti Doi', price: 60, category: 'Desserts' }
+                    { name: 'Mutton Kosha', price: 399, category: 'Main Course', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800' },
+                    { name: 'Fish Curry', price: 329, category: 'Main Course', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800' },
+                    { name: 'Luchi', price: 40, category: 'Breads', image: 'https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=800' },
+                    { name: 'Cholar Dal', price: 150, category: 'Main Course', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800' },
+                    { name: 'Rasgulla', price: 25, category: 'Desserts', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800' },
+                    { name: 'Mishti Doi', price: 60, category: 'Desserts', image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800' }
                 ]
             },
             {
@@ -103,11 +103,11 @@ const seedData = async () => {
                 isActive: true,
                 owner: ownerId,
                 foods: [
-                    { name: 'Dal Baati Churma', price: 299, category: 'Main Course' },
-                    { name: 'Gatte Ki Sabzi', price: 199, category: 'Main Course' },
-                    { name: 'Ker Sangri', price: 220, category: 'Main Course' },
-                    { name: 'Bajra Roti', price: 35, category: 'Breads' },
-                    { name: 'Rajasthani Thali', price: 399, category: 'Main Course' }
+                    { name: 'Dal Baati Churma', price: 299, category: 'Main Course', image: 'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=800' },
+                    { name: 'Gatte Ki Sabzi', price: 199, category: 'Main Course', image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc0?w=800' },
+                    { name: 'Ker Sangri', price: 220, category: 'Main Course', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800' },
+                    { name: 'Bajra Roti', price: 35, category: 'Breads', image: 'https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=800' },
+                    { name: 'Rajasthani Thali', price: 399, category: 'Main Course', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=800' }
                 ]
             },
             {
@@ -118,10 +118,10 @@ const seedData = async () => {
                 isActive: true,
                 owner: ownerId,
                 foods: [
-                    { name: 'Hyderabadi Chicken Biryani', price: 350, category: 'Main Course' },
-                    { name: 'Mutton Haleem', price: 400, category: 'Main Course' },
-                    { name: 'Chicken 65', price: 250, category: 'Starters' },
-                    { name: 'Double Ka Meetha', price: 150, category: 'Desserts' }
+                    { name: 'Hyderabadi Chicken Biryani', price: 350, category: 'Main Course', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800' },
+                    { name: 'Mutton Haleem', price: 400, category: 'Main Course', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800' },
+                    { name: 'Chicken 65', price: 250, category: 'Starters', image: 'https://images.unsplash.com/photo-1626074263720-c24c75ca1029?w=800' },
+                    { name: 'Double Ka Meetha', price: 150, category: 'Desserts', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800' }
                 ]
             },
             {
@@ -132,10 +132,10 @@ const seedData = async () => {
                 isActive: true,
                 owner: ownerId,
                 foods: [
-                    { name: 'Goan Fish Curry', price: 450, category: 'Main Course' },
-                    { name: 'Prawns Balchao', price: 500, category: 'Starters' },
-                    { name: 'Chicken Xacuti', price: 380, category: 'Main Course' },
-                    { name: 'Bebinca', price: 200, category: 'Desserts' }
+                    { name: 'Goan Fish Curry', price: 450, category: 'Main Course', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800' },
+                    { name: 'Prawns Balchao', price: 500, category: 'Starters', image: 'https://images.unsplash.com/photo-1559742811-822873691df8?w=800' },
+                    { name: 'Chicken Xacuti', price: 380, category: 'Main Course', image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800' },
+                    { name: 'Bebinca', price: 200, category: 'Desserts', image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800' }
                 ]
             },
             {
@@ -146,10 +146,10 @@ const seedData = async () => {
                 isActive: true,
                 owner: ownerId,
                 foods: [
-                    { name: 'Amritsari Kulcha', price: 120, category: 'Breads' },
-                    { name: 'Chole Bhature', price: 180, category: 'Main Course' },
-                    { name: 'Sarson Ka Saag with Makki Roti', price: 250, category: 'Main Course' },
-                    { name: 'Lassi', price: 80, category: 'Beverages' }
+                    { name: 'Amritsari Kulcha', price: 120, category: 'Breads', image: 'https://images.unsplash.com/photo-1626776876729-bab4369a5a5a?w=800' },
+                    { name: 'Chole Bhature', price: 180, category: 'Main Course', image: 'https://images.unsplash.com/photo-1626776876729-bab4369a5a5a?w=800' },
+                    { name: 'Sarson Ka Saag with Makki Roti', price: 250, category: 'Main Course', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800' },
+                    { name: 'Lassi', price: 80, category: 'Beverages', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800' }
                 ]
             }
         ];
@@ -162,13 +162,12 @@ const seedData = async () => {
             const savedRestaurant = await restaurant.save();
             console.log(`Created Restaurant: ${savedRestaurant.name}`);
 
-            // Create Foods for this Restaurant
             const foodsToInsert = foods.map(food => ({
                 restaurantId: savedRestaurant._id,
                 name: food.name,
                 price: food.price,
                 category: food.category,
-                image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c', // Food image placeholder
+                image: food.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c', // Fallback image
                 isAvailable: true
             }));
 
