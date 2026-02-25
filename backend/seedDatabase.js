@@ -109,6 +109,48 @@ const seedData = async () => {
                     { name: 'Bajra Roti', price: 35, category: 'Breads' },
                     { name: 'Rajasthani Thali', price: 399, category: 'Main Course' }
                 ]
+            },
+            {
+                name: 'Hyderabad Nawabi Cuisine',
+                description: 'Authentic Hyderabadi Biryani and More',
+                address: 'Banjara Hills, Hyderabad',
+                image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8',
+                isActive: true,
+                owner: ownerId,
+                foods: [
+                    { name: 'Hyderabadi Chicken Biryani', price: 350, category: 'Main Course' },
+                    { name: 'Mutton Haleem', price: 400, category: 'Main Course' },
+                    { name: 'Chicken 65', price: 250, category: 'Starters' },
+                    { name: 'Double Ka Meetha', price: 150, category: 'Desserts' }
+                ]
+            },
+            {
+                name: 'Goan Coastal Retreat',
+                description: 'Delicious Goan Seafood and Curries',
+                address: 'Vagator Beach Road, Goa',
+                image: 'https://images.unsplash.com/photo-1544025162-d76694265947',
+                isActive: true,
+                owner: ownerId,
+                foods: [
+                    { name: 'Goan Fish Curry', price: 450, category: 'Main Course' },
+                    { name: 'Prawns Balchao', price: 500, category: 'Starters' },
+                    { name: 'Chicken Xacuti', price: 380, category: 'Main Course' },
+                    { name: 'Bebinca', price: 200, category: 'Desserts' }
+                ]
+            },
+            {
+                name: 'Amritsari Dhaba',
+                description: 'Hearty Punjabi Flavors',
+                address: 'Golden Temple Road, Amritsar',
+                image: 'https://images.unsplash.com/photo-1626776876729-bab4369a5a5a',
+                isActive: true,
+                owner: ownerId,
+                foods: [
+                    { name: 'Amritsari Kulcha', price: 120, category: 'Breads' },
+                    { name: 'Chole Bhature', price: 180, category: 'Main Course' },
+                    { name: 'Sarson Ka Saag with Makki Roti', price: 250, category: 'Main Course' },
+                    { name: 'Lassi', price: 80, category: 'Beverages' }
+                ]
             }
         ];
 
