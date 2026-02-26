@@ -10,9 +10,17 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
-    params: {
-        folder: 'cravecart',
-        allowed_formats: ['jpg', 'png', 'jpeg']
+    params: async (req, file) => {
+        let folder = 'cravecart';
+        if (req.baseUrl.includes('restaurants')) {
+            folder = 'cravecart/restaurants';
+        } else if (req.baseUrl.includes('foods')) {
+            folder = 'cravecart/foods';
+        }
+        return {
+            folder: folder,
+            allowed_formats: ['jpg', 'png', 'jpeg']
+        };
     }
 });
 

@@ -18,6 +18,7 @@ const FoodManagement = () => {
         category: '',
         image: null
     });
+    const [preview, setPreview] = useState(null);
     const [submitting, setSubmitting] = useState(false);
 
     const fetchData = async () => {
@@ -70,6 +71,7 @@ const FoodManagement = () => {
             setShowModal(false);
             fetchData();
             setFormData({ name: '', price: '', category: '', image: null });
+            setPreview(null);
         } catch (error) {
             console.error(error);
             toast.error(error.response?.data?.message || 'Something went wrong');
@@ -87,6 +89,7 @@ const FoodManagement = () => {
             category: food.category,
             image: null
         });
+        setPreview(food.image);
         setShowModal(true);
     };
 
@@ -111,7 +114,7 @@ const FoodManagement = () => {
                     </div>
                 </div>
                 <button
-                    onClick={() => { setEditMode(false); setFormData({ name: '', price: '', category: '', image: null }); setShowModal(true); }}
+                    onClick={() => { setEditMode(false); setFormData({ name: '', price: '', category: '', image: null }); setPreview(null); setShowModal(true); }}
                     className="btn-teal px-8 py-4 shadow-teal-500/20"
                 >
                     <Plus size={20} /> Add New Dish
@@ -209,19 +212,32 @@ const FoodManagement = () => {
                                 </div>
                                 <div>
                                     <label className="block text-[11px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Dish Image</label>
-                                    <div className="relative border-2 border-dashed border-gray-100 rounded-3xl p-8 flex flex-col items-center justify-center bg-gray-50/50 hover:bg-[#14b8a6]/5 hover:border-[#14b8a6]/20 transition-all cursor-pointer group">
+                                    <div className={`relative border-2 border-dashed border-gray-100 rounded-3xl p-8 flex flex-col items-center justify-center bg-gray-50/50 hover:bg-[#14b8a6]/5 hover:border-[#14b8a6]/20 transition-all cursor-pointer group ${preview ? 'overflow-hidden p-0 h-48' : ''}`}>
                                         <input
                                             type="file"
-                                            className="absolute inset-0 opacity-0 cursor-pointer"
-                                            onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
+                                            accept="image/*"
+                                            className="absolute inset-0 opacity-0 cursor-pointer z-10"
+                                            onChange={(e) => {
+                                                const file = e.target.files[0];
+                                                if (file) {
+                                                    setFormData({ ...formData, image: file });
+                                                    setPreview(URL.createObjectURL(file));
+                                                }
+                                            }}
                                             required={!editMode}
                                         />
-                                        <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-[#14b8a6] mb-4 group-hover:scale-110 transition-transform">
-                                            <ImageIcon size={24} />
-                                        </div>
-                                        <span className="text-sm font-bold text-gray-400 group-hover:text-[#14b8a6] transition-colors">
-                                            {formData.image ? formData.image.name : 'Choose a mouth-watering image'}
-                                        </span>
+                                        {preview ? (
+                                            <img src={preview} alt="Preview" className="w-full h-full object-cover" />
+                                        ) : (
+                                            <>
+                                                <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-[#14b8a6] mb-4 group-hover:scale-110 transition-transform">
+                                                    <ImageIcon size={24} />
+                                                </div>
+                                                <span className="text-sm font-bold text-gray-400 group-hover:text-[#14b8a6] transition-colors">
+                                                    Choose a mouth-watering image
+                                                </span>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="flex gap-4 pt-6">
