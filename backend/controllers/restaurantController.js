@@ -1,4 +1,5 @@
 const Restaurant = require('../models/Restaurant');
+const { smartFetchImage } = require('../utils/cloudinary');
 
 // @desc    Get all active restaurants
 // @route   GET /api/restaurants
@@ -43,7 +44,14 @@ const getRestaurantById = async (req, res) => {
 const createRestaurant = async (req, res) => {
     try {
         const { name, description, address, image: imageUrl } = req.body;
-        const image = req.file ? req.file.path : imageUrl;
+        let image = '';
+
+        if (req.file) {
+            image = req.file.path;
+        } else if (imageUrl) {
+            // Smart fetch and re-host to Cloudinary
+            image = await smartFetchImage(imageUrl, 'cravecart/restaurants');
+        }
 
         if (!name || !description || !address || !image) {
             return res.status(400).json({ success: false, message: 'All fields including image are required' });
@@ -87,7 +95,7 @@ const updateRestaurant = async (req, res) => {
             if (req.file) {
                 restaurant.image = req.file.path;
             } else if (req.body.image) {
-                restaurant.image = req.body.image;
+                restaurant.image = await smartFetchImage(req.body.image, 'cravecart/restaurants');
             }
 
             console.log(`Updating restaurant ${req.params.id} with image: ${restaurant.image}`);
