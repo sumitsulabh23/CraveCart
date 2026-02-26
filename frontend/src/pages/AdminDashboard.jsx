@@ -92,7 +92,7 @@ const AdminDashboard = () => {
                 <StatCard title="Pending" value={stats.pendingOrders} icon={Clock} color="bg-amber-500" shadow="shadow-amber-500/30" />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 gap-12">
                 <div className="bg-white p-10 rounded-[40px] card-shadow border border-gray-50 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-48 h-48 bg-gray-50 rounded-full -mr-24 -mt-24 blur-3xl"></div>
 
@@ -119,28 +119,6 @@ const AdminDashboard = () => {
                             <span className="font-extrabold text-gray-900 flex items-center gap-2 group-hover:text-blue-600 transition-colors">Orders <ExternalLink size={16} /></span>
                             <p className="text-xs text-gray-400 mt-2 font-medium">Track delivery and order statuses</p>
                         </Link>
-                    </div>
-                </div>
-
-                <div className="bg-white p-10 rounded-[40px] card-shadow border border-gray-50 overflow-hidden relative">
-                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-50 rounded-full -ml-24 -mb-24 blur-3xl opacity-50"></div>
-                    <h2 className="text-2xl font-extrabold text-gray-900 mb-10 tracking-tight">System Vitality</h2>
-                    <div className="space-y-6 relative z-10">
-                        <div className="flex justify-between items-center p-6 bg-emerald-50/50 rounded-[28px] border border-emerald-100/50 hover:bg-emerald-50 transition-colors">
-                            <div className="flex items-center gap-4 text-emerald-700">
-                                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></div>
-                                <span className="font-bold">Database Core</span>
-                            </div>
-                            <span className="px-5 py-1.5 bg-emerald-500 text-white text-[10px] font-black rounded-full tracking-widest uppercase shadow-lg shadow-emerald-500/20">Active</span>
-                        </div>
-
-                        <div className="flex justify-between items-center p-6 bg-blue-50/50 rounded-[28px] border border-blue-100/50 hover:bg-blue-50 transition-colors">
-                            <div className="flex items-center gap-4 text-blue-700">
-                                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                                <span className="font-bold">Cloud Images</span>
-                            </div>
-                            <span className="px-5 py-1.5 bg-blue-500 text-white text-[10px] font-black rounded-full tracking-widest uppercase shadow-lg shadow-blue-500/20">Stable</span>
-                        </div>
                     </div>
                 </div>
             </div>
