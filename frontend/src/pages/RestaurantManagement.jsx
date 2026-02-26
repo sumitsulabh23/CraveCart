@@ -14,7 +14,8 @@ const RestaurantManagement = () => {
         name: '',
         description: '',
         address: '',
-        image: null
+        image: null,
+        imageUrl: ''
     });
     const [preview, setPreview] = useState(null);
     const [submitting, setSubmitting] = useState(false);
@@ -53,6 +54,8 @@ const RestaurantManagement = () => {
         data.append('address', formData.address);
         if (formData.image) {
             data.append('image', formData.image);
+        } else if (formData.imageUrl) {
+            data.append('image', formData.imageUrl);
         }
 
         try {
@@ -65,7 +68,7 @@ const RestaurantManagement = () => {
             }
             setShowModal(false);
             fetchRestaurants();
-            setFormData({ name: '', description: '', address: '', image: null });
+            setFormData({ name: '', description: '', address: '', image: null, imageUrl: '' });
             setPreview(null);
         } catch (error) {
             console.error(error);
@@ -82,7 +85,8 @@ const RestaurantManagement = () => {
             name: res.name,
             description: res.description,
             address: res.address,
-            image: null
+            image: null,
+            imageUrl: res.image
         });
         setPreview(res.image);
         setShowModal(true);
@@ -107,7 +111,7 @@ const RestaurantManagement = () => {
                     </div>
                 </div>
                 <button
-                    onClick={() => { setEditMode(false); setFormData({ name: '', description: '', address: '', image: null }); setPreview(null); setShowModal(true); }}
+                    onClick={() => { setEditMode(false); setFormData({ name: '', description: '', address: '', image: null, imageUrl: '' }); setPreview(null); setShowModal(true); }}
                     className="btn-teal px-8 py-4 shadow-teal-500/20"
                 >
                     <Plus size={20} /> Add New Kitchen
@@ -214,7 +218,22 @@ const RestaurantManagement = () => {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-[11px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Cover Image</label>
+                                    <label className="flex justify-between items-center mb-2 ml-1">
+                                        <span className="text-[11px] font-black uppercase tracking-widest text-gray-400">Cover Image</span>
+                                        <span className="text-[10px] font-bold text-[#14b8a6] bg-[#14b8a6]/5 px-2 py-0.5 rounded">URL or Upload</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        className="w-full px-5 py-3 rounded-xl bg-gray-50 border border-transparent focus:bg-white focus:border-[#14b8a6] focus:ring-4 focus:ring-[#14b8a6]/5 outline-none transition-all placeholder:text-gray-300 text-gray-700 text-sm mb-4"
+                                        value={formData.imageUrl}
+                                        onChange={(e) => {
+                                            setFormData({ ...formData, imageUrl: e.target.value, image: null });
+                                            setPreview(e.target.value);
+                                        }}
+                                        placeholder="Paste image link here..."
+                                    />
+
                                     <div className={`relative border-2 border-dashed border-gray-100 rounded-3xl p-8 flex flex-col items-center justify-center bg-gray-50/50 hover:bg-[#14b8a6]/5 hover:border-[#14b8a6]/20 transition-all cursor-pointer group ${preview ? 'overflow-hidden p-0 h-48' : ''}`}>
                                         <input
                                             type="file"
@@ -223,11 +242,11 @@ const RestaurantManagement = () => {
                                             onChange={(e) => {
                                                 const file = e.target.files[0];
                                                 if (file) {
-                                                    setFormData({ ...formData, image: file });
+                                                    setFormData({ ...formData, image: file, imageUrl: '' });
                                                     setPreview(URL.createObjectURL(file));
                                                 }
                                             }}
-                                            required={!editMode}
+                                            required={!editMode && !formData.imageUrl}
                                         />
                                         {preview ? (
                                             <img src={preview} alt="Preview" className="w-full h-full object-cover" />
@@ -237,11 +256,20 @@ const RestaurantManagement = () => {
                                                     <ImageIcon size={24} />
                                                 </div>
                                                 <span className="text-sm font-bold text-gray-400 group-hover:text-[#14b8a6] transition-colors">
-                                                    Click to discover images
+                                                    Or upload from desktop
                                                 </span>
                                             </>
                                         )}
                                     </div>
+                                    {preview && (
+                                        <button
+                                            type="button"
+                                            onClick={() => { setPreview(null); setFormData({ ...formData, image: null, imageUrl: '' }); }}
+                                            className="w-full mt-2 text-[10px] font-black uppercase text-red-400 hover:text-red-500 transition-colors"
+                                        >
+                                            Remove Image
+                                        </button>
+                                    )}
                                 </div>
                                 <div className="flex gap-4 pt-6">
                                     <button

@@ -20,8 +20,8 @@ const getFoodsByRestaurant = async (req, res) => {
 // @access  Private/Admin
 const createFoodItem = async (req, res) => {
     try {
-        const { restaurantId, name, price, category } = req.body;
-        const image = req.file ? req.file.path : '';
+        const { restaurantId, name, price, category, image: imageUrl } = req.body;
+        const image = req.file ? req.file.path : imageUrl;
 
         if (!restaurantId || !name || !price || !category || !image) {
             return res.status(400).json({ success: false, message: 'All fields including image are required' });
@@ -74,6 +74,8 @@ const updateFoodItem = async (req, res) => {
 
             if (req.file) {
                 foodItem.image = req.file.path;
+            } else if (req.body.image) {
+                foodItem.image = req.body.image;
             }
 
             const updatedFood = await foodItem.save();
