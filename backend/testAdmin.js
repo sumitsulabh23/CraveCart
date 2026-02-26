@@ -24,7 +24,7 @@ const test = async () => {
         fs.writeFileSync('dummy.jpg', 'fake image content');
         form.append('image', fs.createReadStream('dummy.jpg'));
 
-        const res = await axios.post('https://cravecart-qm4q.onrender.com/api/restaurants', form, {
+        const res = await axios.post('https://cravecart-9074.onrender.com/api/restaurants', form, {
             headers: {
                 ...form.getHeaders(),
                 Authorization: `Bearer ${token}`

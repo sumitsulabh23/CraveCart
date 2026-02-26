@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://cravecart-qm4q.onrender.com/api'
+    baseURL: 'https://cravecart-9074.onrender.com/api'
 });
 
 // Add token to headers if it exists

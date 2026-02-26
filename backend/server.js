@@ -31,9 +31,13 @@ app.use('/api/foods', foodRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 
-// Basic Route
+// Basic Routes
 app.get('/', (req, res) => {
     res.send('CraveCart API is running...');
+});
+
+app.get('/api', (req, res) => {
+    res.json({ message: 'CraveCart API root', ok: true });
 });
 
 // Error Handling Middleware
