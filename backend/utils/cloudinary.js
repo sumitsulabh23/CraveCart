@@ -45,16 +45,42 @@ const smartFetchImage = async (url, folder) => {
             try {
                 const { data: html } = await axios.get(url, {
                     headers: { 'User-Agent': 'Mozilla/5.0' },
-                    timeout: 5000
+                    timeout: 7000
                 });
 
-                // Simple regex to find og:image
-                const ogMatch = html.match(/property="og:image" content="([^"]+)"/) ||
-                    html.match(/content="([^"]+)" property="og:image"/);
+                // 1. Try OG image with more flexible regex
+                const ogMatch = html.match(/property=["']og:image["']\s+content=["']([^"']+)["']/) ||
+                    html.match(/content=["']([^"']+)["']\s+property=["']og:image["']/);
 
-                if (ogMatch && ogMatch[1]) {
-                    targetImageUrl = ogMatch[1];
-                    console.log(`Found og:image: ${targetImageUrl}`);
+                // 2. Try Twitter image
+                const twitterMatch = html.match(/name=["']twitter:image["']\s+content=["']([^"']+)["']/) ||
+                    html.match(/content=["']([^"']+)["']\s+name=["']twitter:image["']/);
+
+                // 3. Try JSON-LD (very reliable for specific entities like dishes/restaurants)
+                const jsonLdMatch = html.match(/"image":\s*["']([^"']+)["']/) ||
+                    html.match(/@type":\s*["']ImageObject["'].*?"url":\s*["']([^"']+)["']/s);
+
+                let bestImageUrl = null;
+
+                // Prioritization: JSON-LD (usually most specific) > OG > Twitter
+                if (jsonLdMatch && jsonLdMatch[1] && !jsonLdMatch[1].includes('placeholder')) {
+                    bestImageUrl = jsonLdMatch[1];
+                    console.log(`Found high-quality JSON-LD image: ${bestImageUrl}`);
+                } else if (ogMatch && ogMatch[1]) {
+                    bestImageUrl = ogMatch[1];
+                    console.log(`Found og:image: ${bestImageUrl}`);
+                } else if (twitterMatch && twitterMatch[1]) {
+                    bestImageUrl = twitterMatch[1];
+                    console.log(`Found twitter:image: ${bestImageUrl}`);
+                }
+
+                if (bestImageUrl) {
+                    // Final Clean-up: If it's a relative URL, resolve it (basic)
+                    if (!bestImageUrl.startsWith('http')) {
+                        const baseUrl = new URL(url).origin;
+                        bestImageUrl = new URL(bestImageUrl, baseUrl).href;
+                    }
+                    targetImageUrl = bestImageUrl;
                 }
             } catch (err) {
                 console.error(`Failed to fetch webpage: ${err.message}. Using original URL as fallback.`);
